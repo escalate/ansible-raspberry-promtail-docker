@@ -2,6 +2,8 @@ promtail_docker_image_version: latest
 promtail_docker_memory: 1G
 promtail_docker_labels: {}
 promtail_docker_network: bridge
+promtail_docker_publish_ports:
+  - 127.0.0.1:9080:9080
 
 promtail_data_path: /var/lib/promtail
 promtail_etc_path: /etc/promtail

@@ -26,7 +26,11 @@ ExecStart=/usr/bin/docker run \
 {% if promtail_docker_network not in ['bridge', 'host', 'none'] %}
 --network-alias=promtail \
 {% endif %}
---publish=127.0.0.1:9080:9080 \
+{% if promtail_docker_publish_ports | length > 0 %}
+{% for port in promtail_docker_publish_ports %}
+--publish={{ port }} \
+{% endfor %}
+{% endif %}
 --user=10600:{{ promtail_group_gid | default('0') }} \
 grafana/promtail:{{ promtail_docker_image_version }}
 ExecStop=/usr/bin/docker stop %n
