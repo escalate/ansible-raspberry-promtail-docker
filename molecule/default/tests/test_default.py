@@ -56,7 +56,7 @@ def test_promtail_service(host):
 
 def test_promtail_docker_container(host):
     """Check Promtail docker container"""
-    d = host.docker("promtail.service").inspect()
+    d = host.docker("promtail").inspect()
     assert d["HostConfig"]["Memory"] == 1073741824
     assert d["Config"]["Image"] == "grafana/promtail:latest"
     assert d["Config"]["Labels"]["maintainer"] == "me@example.com"
