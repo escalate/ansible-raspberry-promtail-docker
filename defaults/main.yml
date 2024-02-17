@@ -8,7 +8,7 @@ promtail_docker_publish_ports:
 promtail_data_path: /var/lib/promtail
 promtail_etc_path: /etc/promtail
 
-# https://grafana.com/docs/loki/latest/clients/promtail/configuration/
+# https://grafana.com/docs/loki/latest/send-data/promtail/configuration/
 promtail_config:
   server:
     http_listen_port: 9080
@@ -30,5 +30,5 @@ promtail_config:
 # Options: static or journal
 promtail_config_type: static
 
-# https://grafana.com/docs/loki/latest/clients/promtail/configuration/#use-environment-variables-in-the-configuration
+# https://grafana.com/docs/loki/latest/send-data/promtail/configuration/#use-environment-variables-in-the-configuration
 promtail_env_vars: {}
