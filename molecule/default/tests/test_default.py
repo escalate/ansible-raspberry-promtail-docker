@@ -26,6 +26,7 @@ def test_promtail_config(host):
     assert f.user == "root"
     assert f.group == "root"
 
+    ansible_vars = host.ansible.get_variables()
     config = (
         "clients:\n"
         "- url: http://loki:3100/loki/api/v1/push\n"
@@ -36,7 +37,7 @@ def test_promtail_config(host):
         "  static_configs:\n"
         "  - labels:\n"
         "      __path__: /var/log/*log\n"
-        "      host: instance\n"
+        "      host: "+ansible_vars["inventory_hostname"]+"\n"
         "      job: varlogs\n"
         "    targets:\n"
         "    - localhost\n"
