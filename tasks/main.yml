@@ -64,10 +64,16 @@
     mode: 0644
   notify: Restart promtail service
 
-- name: Start and enable service
+- name: Start service
   ansible.builtin.systemd:
     name: promtail
     state: started
+    daemon_reload: true
+  register: promtail_service_started
+
+- name: Enable service
+  ansible.builtin.systemd:
+    name: promtail
     enabled: true
     daemon_reload: true
 
