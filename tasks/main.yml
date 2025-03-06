@@ -12,7 +12,7 @@
     state: directory
     owner: root
     group: root
-    mode: 0755
+    mode: "0755"
 
 - name: Create data directory
   ansible.builtin.file:
@@ -20,7 +20,7 @@
     state: directory
     owner: promtail
     group: root
-    mode: 0775
+    mode: "0775"
 
 - name: Create service configuration
   ansible.builtin.template:
@@ -28,7 +28,7 @@
     dest: "{{ promtail_etc_path }}/config.yml"
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   no_log: true
   notify: Restart promtail service
 
@@ -38,7 +38,7 @@
     dest: /etc/promtail.env
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   notify: Restart promtail service
 
 - name: Define Docker container labels
@@ -47,7 +47,7 @@
     dest: /etc/promtail.label
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   notify: Restart promtail service
 
 - name: Pull Docker image
@@ -61,7 +61,7 @@
     dest: /etc/systemd/system/promtail.service
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   notify: Restart promtail service
 
 - name: Start service

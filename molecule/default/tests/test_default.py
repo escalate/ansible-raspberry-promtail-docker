@@ -37,7 +37,7 @@ def test_promtail_config(host):
         "  static_configs:\n"
         "  - labels:\n"
         "      __path__: /var/log/*log\n"
-        "      host: "+ansible_vars["inventory_hostname"]+"\n"
+        "      host: " + ansible_vars["inventory_hostname"] + "\n"
         "      job: varlogs\n"
         "    targets:\n"
         "    - localhost\n"
@@ -63,5 +63,4 @@ def test_promtail_docker_container(host):
     assert d["Config"]["Labels"]["maintainer"] == "me@example.com"
     assert "APP_TEST_ENV=true" in d["Config"]["Env"]
     assert "internal" in d["NetworkSettings"]["Networks"]
-    assert \
-        "promtail" in d["NetworkSettings"]["Networks"]["internal"]["Aliases"]
+    assert "promtail" in d["NetworkSettings"]["Networks"]["internal"]["Aliases"]
